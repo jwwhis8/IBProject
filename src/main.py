@@ -1,25 +1,14 @@
 import pdfkit
+import readData
+import PyPDF2
+import os
 
-def getYear():
-    return("""2023-2024""")
+def formatCourses(courses):
+    list_items = ''.join(f'<li>{course}</li>\n' for course in courses if course == course and course != "nan")
+    return list_items
 
-def getStudent():
-    return ("""JW""")
-
-def getCourses():
-    return("""<li>English III</li>
-      <li>Pre-Calculus</li>
-      <li>Physics</li>
-      <li>IB German A Lit HL Yr 1</li>
-      <li>US Gov't/Econ</li>
-      <li>TOK I</li>
-      <li>Ceramics II</li>
-      <li>Dig Photo I</li>
-      <li>Fun Art</li>
-      <li>Sculpture</li>""")
-
-
-page = f"""
+def getPageText(name, courses, year): 
+    return (f"""
 <html>
   <head>
     <style>
@@ -89,7 +78,7 @@ page = f"""
     </style>
   </head>
   <body>
-    <h1 class="center bold padding-up">{getYear()} COURSE RECOMMENDATIONS</h1>
+    <h1 class="center bold padding-up">{year  } COURSE RECOMMENDATIONS</h1>
     <h2 class="left padding">Considerations as you review your course recommendations:</h2>
     <ul class="list-bullet padding">
       <li class="indent">Your teachers considered many factors when determining their recommendations for you. If you have any questions, talk to your current teacher in that department.</li>
@@ -105,9 +94,9 @@ page = f"""
     </ul>
     <p class="left padding">(Requesting a course for which you were NOT recommended will trigger the relevant department to consider your request.)</p>
     <h3 class="center bold underline">Course Recommendations</h3>
-    <h4 class="center underline bold">{getStudent()}</h4>
+    <h4 class="center underline bold">{name}</h4>
     <ul class="center list-no-style">
-        {getCourses()}
+        {formatCourses(courses)}
     </ul>
     <p class="padding">I, _________________________________, confirm that I have reviewed my course recommendations for 2023-2024 and requested courses while considering all of the above information.</p>
     <p class="padding padding-down"><b>Student Signature: </b>_________________________________________</p>
@@ -119,7 +108,45 @@ page = f"""
     <p class="padding"><b>College Counselor Signature (for rising 12th grade only): </b>________________________________________</p>
   </body>
 </html>
-"""
+""")
 
-pdfkit.from_string(page, 'output.pdf')
+# Initialize the thing
+readData    
 
+def getFilename(x):
+   return "PDFs/" + readData.getName(x) + ".pdf"
+
+year = readData.getYear()
+
+for x in range(readData.df.shape[1]):
+  pdfkit.from_string(getPageText(readData.getName(x), readData.getCourses(x), year), getFilename(x))
+    
+
+def combine_pdfs_in_folder(folder_path, output_pdf):
+    pdf_writer = PyPDF2.PdfWriter()
+
+    # List all files in the folder, sort them, and filter out non-PDF files
+    pdf_files = sorted([f for f in os.listdir(folder_path) if f.endswith('.pdf')])
+
+    for pdf in pdf_files:
+        pdf_path = os.path.join(folder_path, pdf)
+        
+        # Using context manager for opening files
+        with open(pdf_path, 'rb') as fileobj:
+            try:
+                pdf_reader = PyPDF2.PdfReader(fileobj)
+                
+                # Add each page of the PDF to the writer
+                for page in pdf_reader.pages:
+                    pdf_writer.add_page(page)
+            except PyPDF2.utils.PdfReadError as e:
+                print(f"Error reading {pdf_path}: {e}")
+
+    # Write out the combined PDF
+    with open(output_pdf, 'wb') as out:
+        pdf_writer.write(out)
+
+
+folder = 'PDFs/'  # Replace with the path to your folder containing PDFs
+output_file = 'combined.pdf'  # Output file name
+combine_pdfs_in_folder(folder, output_file)
