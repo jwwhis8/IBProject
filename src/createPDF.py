@@ -112,7 +112,7 @@ def getPageText(name, courses, year):
 
 
 def getFilename(x):
-   return "PDFs/" + readData.getName(x) + ".pdf"
+   return "Students/" + readData.getName(x) + ".pdf"
 
 
 def combine_pdfs_in_folder(folder_path, output_pdf):
@@ -147,9 +147,13 @@ def createPDF(path, year_value):
 
   year = year_value
 
+  if not os.path.exists("Students"):
+    # If it does not exist, create it
+    os.makedirs("Students")
+
   for x in range(readData.df.shape[1]):
     pdfkit.from_string(getPageText(readData.getName(x), readData.getCourses(x), year), getFilename(x))
 
-  folder = 'PDFs/'  # Replace with the path to your folder containing PDFs
-  output_file = 'Student Course Recommendations.pdf'  # Output file name
+  folder = '/'  # Replace with the path to your folder containing PDFs
+  output_file = 'Recommendations.pdf'  # Output file name
   combine_pdfs_in_folder(folder, output_file)

@@ -15,13 +15,13 @@ def generate():
 def runWindow():
     root = tk.Tk()
     root.title("File Explorer")
-    root.geometry("750x850")
+    root.geometry("950x1000")
     root.config(background="white")
 
     # Create an File Explorer widget
     global file_explorer
-    file_explorer = tk.Label(root, text="Explore files",
-        font=("Verdana", 14, "bold"),
+    file_explorer = tk.Label(root, text="First Select your Spreadsheet",
+        font=("Verdana", 13, "bold"),
         width=100,
         height=4, fg="white", bg="gray")
 
