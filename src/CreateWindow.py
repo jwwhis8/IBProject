@@ -1,11 +1,12 @@
 import customtkinter as tk
 from tkinter.filedialog import askopenfilename
 import CreatePDF
+
 class App(tk.CTk):
     
     def browse(self):
         global f_path
-        f_path = askopenfilename(initialdir="/",
+        f_path = askopenfilename(initialdir="~",
             title="Select File", filetypes=(("Excel files","*.xlsx*"),("All Files","*.*")))
         self.file_explorer.configure(text="File Opened: " + f_path)
 
