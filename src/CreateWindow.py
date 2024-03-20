@@ -62,7 +62,7 @@ class App(tk.CTk):
         self.backPageFrame = tk.CTkFrame(master=self)
         self.backPageFrame.grid(row=2, column=0, padx=50, pady=ypad, sticky="nswe")
 
-        self.back_page = tk.CTkLabel(master=self.backPageFrame, text="First the back page of the PDF",
+        self.back_page = tk.CTkLabel(master=self.backPageFrame, text="Select PDF that has the back page",
             font=("helvetica", 20))
         self.back_page.pack(padx=xpad, pady=ypad, anchor="center")
 
