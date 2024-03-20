@@ -2,7 +2,6 @@ pip install pdfkit
 pip install PyPDF2
 pip install pandas
 pip install customtkinter
-pip install reportlab
 
 Install this manually. You may need to add it as an enviroment variable and reboot.
 https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
