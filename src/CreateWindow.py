@@ -51,7 +51,7 @@ class App(tk.CTk):
         self.fileExplorerFrame = tk.CTkFrame(master=self)
         self.fileExplorerFrame.grid(row=1, column=0, padx=50, pady=ypad, sticky="nswe")
 
-        self.file_explorer = tk.CTkLabel(master=self.fileExplorerFrame, text="First Select your Spreadsheet",
+        self.file_explorer = tk.CTkLabel(master=self.fileExplorerFrame, text="First Select your Spreadsheet:",
             font=("helvetica", 20))
         self.file_explorer.pack(padx=xpad, pady=ypad, anchor="center")
 
@@ -62,7 +62,7 @@ class App(tk.CTk):
         self.backPageFrame = tk.CTkFrame(master=self)
         self.backPageFrame.grid(row=2, column=0, padx=50, pady=ypad, sticky="nswe")
 
-        self.back_page = tk.CTkLabel(master=self.backPageFrame, text="Select Back Page PDF",
+        self.back_page = tk.CTkLabel(master=self.backPageFrame, text="Select Back Page PDF:",
             font=("helvetica", 20))
         self.back_page.pack(padx=xpad, pady=ypad, anchor="center")
 
