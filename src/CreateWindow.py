@@ -5,13 +5,15 @@ import CreatePDF
 class App(tk.CTk):
     
     def browse(self):
-        global f_path
-        f_path = askopenfilename(initialdir="~",
+        global sheets_path
+        sheets_path = askopenfilename(initialdir="~/Downloads/IBProject",
             title="Select File", filetypes=(("Excel files","*.xlsx*"),("All Files","*.*")))
-        self.file_explorer.configure(text="File Opened: " + f_path)
+        self.file_explorer.configure(text="File Opened: " + sheets_path)
 
     def generate(self):
-        CreatePDF.createPDF(f_path, self.yearEntry.get())
+        CreatePDF.GetSheet.setStudentCount(int(self.numberOfStudents.get()))
+        CreatePDF.create_and_combine_pdfs("Recomendations.pdf", sheets_path, self.yearEntry.get())
+
 
     def __init__(self):
         super().__init__()
@@ -19,7 +21,7 @@ class App(tk.CTk):
         tk.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
         
         self.title("Create Recomendations")
-        self.geometry("500x500")
+        self.geometry("500x700")
 
         self.grid_columnconfigure(0, weight=1)  # configure grid system
         self.grid_rowconfigure(0, weight=5)  # configure grid system
@@ -55,9 +57,19 @@ class App(tk.CTk):
         self.yearEntry = tk.CTkEntry(master=self.yearFrame, width=20, font=("helvetica", 14))
         self.yearEntry.pack(padx=xpad, pady=ypad, anchor="center", fill="x")
 
+        # Student Count Frame
+        self.studentFrame = tk.CTkFrame(master=self)
+        self.studentFrame.grid(row=3, column=0, padx=50, pady=ypad, sticky="nswe")
+
+        self.numberOfStudentsLabel = tk.CTkLabel(master=self.studentFrame, text="Number of Students:", font=("helvetica", 20))
+        self.numberOfStudentsLabel.pack(padx=xpad, pady=ypad, anchor="center")
+
+        self.numberOfStudents = tk.CTkEntry(master=self.studentFrame, width=20, font=("helvetica", 14))
+        self.numberOfStudents.pack(padx=xpad, pady=ypad, anchor="center", fill="x")
+
         # Generate Button
         self.generateButton = tk.CTkButton(master=self, text="Generate PDF", font=("helvetica", 14), command=self.generate)
-        self.generateButton.grid(row=3, column=0, padx=120, pady=(10, 30), sticky="nswe")
+        self.generateButton.grid(row=4, column=0, padx=120, pady=(10, 30), sticky="nswe")
 
 if __name__ == "__main__":
     app = App()
