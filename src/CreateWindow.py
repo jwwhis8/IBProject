@@ -21,7 +21,7 @@ class App(tk.CTk):
     def generate(self):
         CreatePDF.GetSheet.setStudentCount(int(self.numberOfStudents.get()))
         CreatePDF.create_and_combine_pdfs("RecomendationsSingle.pdf", sheets_path, self.yearEntry.get())
-        IntersplicePDF.insert_between_pages("RecomendationsSingle.pdf", back_page_path, "Recomendations.pdf")
+        IntersplicePDF.insert_between_pages("RecomendationsSingle.pdf", back_page_path, "..\Recomendations.pdf")
         os.remove("RecomendationsSingle.pdf")
 
     def __init__(self):

@@ -4,7 +4,18 @@
 
 This application allows for Student Recomendation sheets to be generated quickly, importing data from an Excel Sheet.
 
+## Quick-Start Guide
+
+1.  Clone or Download the repository, and extract the data.
+2.  Navigate to the folder and run the "Application" shortcut
+3.  Select the Excel file and the back-page PDF.
+4.  Enter the year and the number of students to generate for.
+5.  Click Generate
+6.  The PDF should be located in the folder, and can then be printed.
+
 ## Required Libraries
+
+These are only required if the application is being run through Python directly, rather than through the compiled EXE file.
 
 The application requires the following libraries:
 
@@ -14,17 +25,6 @@ The application requires the following libraries:
 - `customtkinter`: Enhances UI with custom widgets for Tkinter.
 
 Additionally, manual installation of `wkhtmltopdf` is required for `pdfkit`. Instructions are available [here](https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf).
-
-## Installation Guide
-
-1.  Ensure Python (3.6 or later) is installed.
-2.  Install the required libraries using the command:
-
-        pip install pdfkit PyPDF2 pandas customtkinter reportlab
-
-3.  Manually install `wkhtmltopdf` as described in the provided link. Once installed, add it as an enviroment variable, and restart your computer.
-
-        https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
 
 ## File by File
 
