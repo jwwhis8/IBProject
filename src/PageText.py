@@ -129,3 +129,4 @@ def getPageText(name, courses, year):
   </body>
 </html>
 """)
+
