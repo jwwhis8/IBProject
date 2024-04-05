@@ -147,25 +147,17 @@ def getPageText(name, courses, year):
         the relevant department to consider your request)</span
       >
     </p>
-    <p class="c6"><span class="c3 c5">Course Recommendations</span></p>
-    <p class="c6 c11"><span class="c5 c3"></span></p>
-    <p class="c6"><span class="c5 c3">Student x</span></p>
-    <p class="c6"><span class="c7">English III</span></p>
-    <p class="c6"><span class="c7">Pre-Calculus</span></p>
-    <p class="c6"><span class="c7">Physics</span></p>
-    <p class="c6"><span class="c7">IB German A Lit HL Yr 1</span></p>
-    <p class="c6"><span class="c7">US Gov&#39;t/Econ</span></p>
-    <p class="c6"><span class="c7">TOK I</span></p>
-    <p class="c6"><span class="c7">Ceramics II</span></p>
-    <p class="c6"><span class="c7">Dig Photo I</span></p>
-    <p class="c6"><span class="c7">Fun Art</span></p>
-    <p class="c6"><span class="c7">Sculpture</span></p>
+    <h3 class="center bold underline">Course Recommendations</h3>
+    <h4 class="center underline bold">{name}</h4>
+    <ul class="center list-no-style">
+        {formatCourses(courses)}
+    </ul>
     <p class="c1 c11"><span class="c7"></span></p>
     <p class="c1 c11"><span class="c14 c16 c21"></span></p>
     <p class="c1">
       <span class="c7"
         >I, _________________________________, confirm that I have reviewed my
-        course recommendations for 2024-2025 and requested courses (on opposite
+        course recommendations for {year} and requested courses (on opposite
         side of this paper) while considering all of the above
         information.</span
       >
@@ -179,7 +171,7 @@ def getPageText(name, courses, year):
     <p class="c1">
       <span class="c7"
         >I confirm that I have reviewed my child&rsquo;s course recommendations
-        for 2024-2025 and I approve the courses requested (on opposite side of
+        for {year} and I approve the courses requested (on opposite side of
         this paper) while considering all of the above information.</span
       >
     </p>
@@ -191,7 +183,7 @@ def getPageText(name, courses, year):
     <p class="c1">
       <span class="c7"
         >I confirm that I have reviewed my advisee&rsquo;s/counselee&rsquo;s
-        course recommendations for 2024-2025 and I approve the courses requested
+        course recommendations for {year} and I approve the courses requested
         (on opposite side of this paper) while considering all of the above
         information.</span
       >
