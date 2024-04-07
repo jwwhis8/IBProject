@@ -1,4 +1,3 @@
-
 def formatCourses(courses):
     list_items = ''.join(f'<li>{course}</li>\n' for course in courses if course == course and course != "nan")
     return list_items
@@ -115,18 +114,13 @@ def getPageText(name, courses, year):
         for {year} and I approve the courses requested (on opposite side of
         this paper) while considering all of the above information.</p>
     <p class="padding padding-down"><b>Parent Signature: </b>______________________________________________</p>
-    <p class="padding">I confirm that I have reviewed my advisee's course recommendations for {year} and I approve the courses requested while considering all of the above information.</p>
+    <p class="padding">I confirm that I have reviewed my advisee's/counselee's course recommendations for {year} and I approve the courses requested while considering all of the above information.</p>
     <p class="padding padding-down"><b>Advisor Signature: </b>______________________________________________</p>
-    <p class="padding">I confirm that I have reviewed my advisee&rsquo;s/counselee&rsquo;s
-        course recommendations for {year} and I approve the courses requested
-        (on opposite side of this paper) while considering all of the above
-        information.</p>
     <p class="padding"><b>College Counselor Signature (for rising 12th grade only): </b>_________________________________________</p>
-    <p class="padding">___________________________________________________________________________________________________________________</p>
+    <p class="padding"><b>Notes from Advisor/College Counselor: </b>_____________________________________________________________________________</p>
     <p class="padding">___________________________________________________________________________________________________________________</p>
     <p class="padding">___________________________________________________________________________________________________________________</p>
     <p class="padding">___________________________________________________________________________________________________________________</p>
   </body>
 </html>
 """)
-
